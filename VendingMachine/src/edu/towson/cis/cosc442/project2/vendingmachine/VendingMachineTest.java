@@ -44,6 +44,46 @@ public class VendingMachineTest {
 		assertNotEquals(vendMachineItem2, testVend.getItem("A"));
 	}
 	
+	@Test (expected = Exception.class)
+	public void addItemOccupiedTest2() {
+		VendingMachineItem vendMachineItem = new VendingMachineItem("Starburst",0.10);
+		VendingMachineItem vendMachineItem2 = new VendingMachineItem("Snickers",0.05);
+		testVend.addItem(vendMachineItem, "B");
+		testVend.addItem(vendMachineItem2, "B");
+		//This will not give the expected value instead it will give the first item
+		assertNotEquals(vendMachineItem2, testVend.getItem("B"));
+	}
+	
+	@Test (expected = Exception.class)
+	public void addItemOccupiedTest3() {
+		VendingMachineItem vendMachineItem = new VendingMachineItem("Starburst",0.10);
+		VendingMachineItem vendMachineItem2 = new VendingMachineItem("Snickers",0.05);
+		testVend.addItem(vendMachineItem, "C");
+		testVend.addItem(vendMachineItem2, "C");
+		//This will not give the expected value instead it will give the first item
+		assertNotEquals(vendMachineItem2, testVend.getItem("C"));
+	}
+	
+	@Test (expected = Exception.class)
+	public void addItemOccupiedTest4() {
+		VendingMachineItem vendMachineItem = new VendingMachineItem("Starburst",0.10);
+		VendingMachineItem vendMachineItem2 = new VendingMachineItem("Snickers",0.05);
+		testVend.addItem(vendMachineItem, "D");
+		testVend.addItem(vendMachineItem2, "D");
+		//This will not give the expected value instead it will give the first item
+		assertNotEquals(vendMachineItem2, testVend.getItem("D"));
+	}
+	
+	@Test (expected = Exception.class)
+	public void addItemOccupiedTest5() throws Exception{
+		VendingMachineItem vendMachineItem = new VendingMachineItem("Starburst",0.10);
+		VendingMachineItem vendMachineItem2 = new VendingMachineItem("Snickers",0.05);
+		testVend.addItem(vendMachineItem, "E");
+		testVend.addItem(vendMachineItem2, "E");
+		//This will not give the expected value instead it will give the first item
+		assertNotEquals(vendMachineItem2, testVend.getItem("E"));
+	}
+	
 	
 	/**
 	 * Test to remove Item if the slot is occupied
@@ -132,5 +172,11 @@ public class VendingMachineTest {
 	public void returnChangeTest() {
 		testVend.balance = 3.0;
 		assertEquals(3.0, testVend.getBalance(),0);
+	}
+	
+	@Test
+	public void returnChangeTest2() {
+		testVend.balance = 2.0;
+		assertEquals(2.0, testVend.returnChange(),0);
 	}
 }
